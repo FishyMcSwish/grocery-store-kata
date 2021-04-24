@@ -6,13 +6,13 @@ import java.util.ArrayList;
 public class Promotion {
     private final LocalDateTime startTime;
     private final LocalDateTime endTime;
-    private final ArrayList<Item> requiredItems;
+    private final Basket requiredItems;
     private final int discount;
 
-    public Promotion(LocalDateTime startTime, LocalDateTime endTime, ArrayList<Item> requiredItems, int discount) {
+    public Promotion(LocalDateTime startTime, LocalDateTime endTime, Basket requiredBasket, int discount) {
         this.startTime = startTime;
         this.endTime = endTime;
-        this.requiredItems = requiredItems;
+        this.requiredItems = requiredBasket;
         this.discount = discount;
     }
     
