@@ -1,6 +1,7 @@
 package grocery.store;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 
 public class Basket {
@@ -15,12 +16,12 @@ public class Basket {
         Collections.addAll(this.items, items); 
     }
 
-    public ArrayList<Item> add(Item item) {
+    public Collection<Item> add(Item item) {
         items.add(item);
         return getItems();
     }
 
-    public ArrayList<Item> getItems() {
+    public Collection<Item> getItems() {
         return items;
     }
 
