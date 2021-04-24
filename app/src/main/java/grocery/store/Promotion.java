@@ -21,7 +21,8 @@ public class Promotion {
     
     public boolean appliesToBasket(Basket proposedBasket){
         
-       return !proposedBasket.getItems().isEmpty() &&
+       return proposedBasket != null &&
+               !proposedBasket.getItems().isEmpty() &&
                proposedBasket.containsAll(requiredBasket.getItems()); 
     }
 }

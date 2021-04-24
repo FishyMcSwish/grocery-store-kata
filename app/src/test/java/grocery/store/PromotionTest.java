@@ -45,6 +45,11 @@ public class PromotionTest {
     }
 
     @Test
+    public void appliesToBasket_WhenProposedBasketIsNull_isFalse() {
+        Promotion promo = new Promotion(null, null, null, 0);
+        assertThat(promo.appliesToBasket(null)).isFalse();
+    }
+    @Test
     public void appliesToBasket_WhenBasketMeetsRequirements_isTrue() {
 
         Promotion promo = new Promotion(null, null, new Basket(Item.SOUP), 0);
