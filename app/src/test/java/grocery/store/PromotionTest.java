@@ -66,11 +66,21 @@ public class PromotionTest {
     }
     
     @Test
-    public void appliesToBasket_WhenBasketMeetsRequirements_MultipleItems_isTrue() {
+    public void appliesToBasket_WhenBasketMeetsRequirements_MultipleItemsNoDuplicates_isTrue() {
         Basket promoBasket = new Basket(Item.SOUP, Item.APPLE);
         Basket proposedBasket = new Basket(Item.SOUP, Item.APPLE, Item.BREAD);
         Promotion promo = new Promotion(null, null, promoBasket, 0);
 
         assertThat(promo.appliesToBasket(proposedBasket)).isTrue();
     }
+    
+    @Test
+    public void appliesToBasket_WhenBasketMeetsRequirements_MultipleItemsWithDuplicates_isTrue() {
+        Basket promoBasket = new Basket(Item.SOUP, Item.APPLE, Item.APPLE);
+        Basket proposedBasket = new Basket(Item.SOUP, Item.APPLE, Item.APPLE, Item.BREAD);
+        Promotion promo = new Promotion(null, null, promoBasket, 0);
+
+        assertThat(promo.appliesToBasket(proposedBasket)).isTrue();
+    }
+    
 }
