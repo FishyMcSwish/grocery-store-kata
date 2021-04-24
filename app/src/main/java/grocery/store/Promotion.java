@@ -19,4 +19,8 @@ public class Promotion {
     public boolean isActiveAtTime(LocalDateTime timeOfUse){
         return startTime.isBefore(timeOfUse) && endTime.isAfter(timeOfUse);
     }
+    
+    public boolean appliesToBasket(Basket basket){
+        return false;
+    }
 }
