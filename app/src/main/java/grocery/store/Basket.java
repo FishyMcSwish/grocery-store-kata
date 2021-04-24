@@ -24,5 +24,9 @@ public class Basket {
     public Collection<Item> getItems() {
         return items;
     }
+    
+    public boolean containsAll(Collection<Item> itemCollection){
+        return items.containsAll(itemCollection);
+    }
 
 }
