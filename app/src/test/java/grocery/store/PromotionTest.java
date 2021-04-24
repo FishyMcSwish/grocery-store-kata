@@ -31,7 +31,7 @@ public class PromotionTest {
         assertThat(promo.isActiveAtTime(now)).isFalse();
     }
     
-    @Test
+    
     public void promotions_InTheirTimeWindow_Active() {
         Promotion promo = new Promotion(oneWeekAgo, oneWeekFromNow,null, 0);
 
@@ -40,19 +40,27 @@ public class PromotionTest {
 
     @Test
     public void appliesToBasket_WhenBasketIsEmpty_isFalse() {
-        Promotion promo = new Promotion(null, null, null, 0);
-        assertThat(promo.appliesToBasket(new Basket())).isFalse();
+        Basket promoBasket = new Basket();
+        Basket proposedBasket = new Basket();
+        Promotion promo = new Promotion(null, null, promoBasket, 0);
+
+        assertThat(promo.appliesToBasket(proposedBasket)).isTrue();
     }
 
     @Test
     public void appliesToBasket_WhenProposedBasketIsNull_isFalse() {
-        Promotion promo = new Promotion(null, null, null, 0);
-        assertThat(promo.appliesToBasket(null)).isFalse();
+        Basket promoBasket = new Basket(Item.SOUP);
+        Basket proposedBasket = null;
+        Promotion promo = new Promotion(null, null, promoBasket, 0);
+        
+        assertThat(promo.appliesToBasket(proposedBasket)).isTrue();
     }
     @Test
     public void appliesToBasket_WhenBasketMeetsRequirements_isTrue() {
-
-        Promotion promo = new Promotion(null, null, new Basket(Item.SOUP), 0);
-        assertThat(promo.appliesToBasket(new Basket(Item.SOUP))).isTrue();
+        Basket promoBasket = new Basket(Item.SOUP);
+        Basket proposedBasket = new Basket(Item.SOUP);
+        Promotion promo = new Promotion(null, null, promoBasket, 0);
+        
+        assertThat(promo.appliesToBasket(proposedBasket)).isTrue();
     }
 }
