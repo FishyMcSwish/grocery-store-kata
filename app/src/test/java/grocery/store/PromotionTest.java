@@ -83,4 +83,12 @@ public class PromotionTest {
         assertThat(promo.appliesToBasket(proposedBasket)).isTrue();
     }
     
+    @Test
+    public void appliesToBasket_WhenBasketFailsRequirements_MultipleItemsWithDuplicates_isFalse() {
+        Basket promoBasket = new Basket(Item.SOUP, Item.APPLE, Item.APPLE, Item.APPLE);
+        Basket proposedBasket = new Basket(Item.SOUP, Item.APPLE, Item.APPLE, Item.BREAD);
+        Promotion promo = new Promotion(null, null, promoBasket, 0);
+
+        assertThat(promo.appliesToBasket(proposedBasket)).isFalse();
+    }
 }
