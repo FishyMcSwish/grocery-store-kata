@@ -3,6 +3,7 @@ package grocery.store;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.Collection;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -20,7 +21,7 @@ public class BasketTest {
     @Test
     public void addingItems_ReturnsAllItemsInBasket() {
         Basket basket = new Basket(Item.APPLE);
-        ArrayList<Item> itemsReturned = basket.add(Item.SOUP);
+        Collection<Item> itemsReturned = basket.add(Item.SOUP);
         
         assertThat(itemsReturned).isEqualTo(basket.getItems());
     }
