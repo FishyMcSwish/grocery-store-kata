@@ -1,7 +1,5 @@
 package grocery.store;
 
-import org.checkerframework.checker.units.qual.A;
-
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -28,19 +26,22 @@ public class Basket {
         return items;
     }
     
-    public boolean containsAll(Collection<Item> itemCollection){
-        if (itemCollection == null || itemCollection.isEmpty()){
-            return false;
-        }
-        List<Item> items2 = new ArrayList<>(List.copyOf(items));
-        for (Item item : itemCollection){
-           if (items2.contains(item)){
-               items2.remove(item);
+    public boolean containsAll(Collection<Item> otherBasketItems){
+        return otherBasketItems != null &&  
+                !otherBasketItems.isEmpty() && 
+                thisBasketContainsAll(otherBasketItems);
+    }
+
+    private boolean thisBasketContainsAll(Collection<Item> otherBasketItems) {
+        List<Item> thisBasketItems = new ArrayList<>(List.copyOf(items));
+        for (Item item : otherBasketItems){
+           if (thisBasketItems.contains(item)){
+               thisBasketItems.remove(item);
            }else{
                return false;
            }
         }
-       return true;
+        return true;
     }
 
 }
