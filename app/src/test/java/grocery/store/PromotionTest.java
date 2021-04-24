@@ -44,7 +44,7 @@ public class PromotionTest {
         Basket proposedBasket = new Basket();
         Promotion promo = new Promotion(null, null, promoBasket, 0);
 
-        assertThat(promo.appliesToBasket(proposedBasket)).isTrue();
+        assertThat(promo.appliesToBasket(proposedBasket)).isFalse();
     }
 
     @Test
@@ -53,14 +53,24 @@ public class PromotionTest {
         Basket proposedBasket = null;
         Promotion promo = new Promotion(null, null, promoBasket, 0);
         
-        assertThat(promo.appliesToBasket(proposedBasket)).isTrue();
+        assertThat(promo.appliesToBasket(proposedBasket)).isFalse();
     }
+    
     @Test
-    public void appliesToBasket_WhenBasketMeetsRequirements_isTrue() {
+    public void appliesToBasket_WhenBasketMeetsRequirements_OneItem_isTrue() {
         Basket promoBasket = new Basket(Item.SOUP);
         Basket proposedBasket = new Basket(Item.SOUP);
         Promotion promo = new Promotion(null, null, promoBasket, 0);
         
+        assertThat(promo.appliesToBasket(proposedBasket)).isTrue();
+    }
+    
+    @Test
+    public void appliesToBasket_WhenBasketMeetsRequirements_MultipleItems_isTrue() {
+        Basket promoBasket = new Basket(Item.SOUP, Item.APPLE);
+        Basket proposedBasket = new Basket(Item.SOUP, Item.APPLE, Item.BREAD);
+        Promotion promo = new Promotion(null, null, promoBasket, 0);
+
         assertThat(promo.appliesToBasket(proposedBasket)).isTrue();
     }
 }
