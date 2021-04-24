@@ -24,11 +24,4 @@ public class Basket {
         return items;
     }
 
-    public int price() {
-        return
-                items.stream()
-                        .map(item -> item.getPrice())
-                        .mapToInt(Integer::intValue)
-                        .sum();
-    }
 }
