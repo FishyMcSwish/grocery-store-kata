@@ -16,7 +16,7 @@ public class Promotion {
         this.discount = discount;
     }
     
-    public boolean isApplicableTo(Basket basket, LocalDateTime timeOfUse){
+    public boolean isActiveAtTime(LocalDateTime timeOfUse){
         return startTime.isBefore(timeOfUse) && endTime.isAfter(timeOfUse);
     }
 }
